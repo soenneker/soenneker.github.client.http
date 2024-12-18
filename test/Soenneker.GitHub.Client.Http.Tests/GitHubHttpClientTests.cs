@@ -1,7 +1,7 @@
 using Soenneker.GitHub.Client.Http.Abstract;
 using Soenneker.Tests.FixturedUnit;
 using Xunit;
-using Xunit.Abstractions;
+
 
 namespace Soenneker.GitHub.Client.Http.Tests;
 
