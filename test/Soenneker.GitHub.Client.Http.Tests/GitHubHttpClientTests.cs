@@ -2,7 +2,6 @@ using Soenneker.GitHub.Client.Http.Abstract;
 using Soenneker.Tests.FixturedUnit;
 using Xunit;
 
-
 namespace Soenneker.GitHub.Client.Http.Tests;
 
 [Collection("Collection")]
@@ -12,6 +11,12 @@ public class GitHubHttpClientTests : FixturedUnitTest
 
     public GitHubHttpClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
     {
-        _util = Resolve<IGitHubHttpClient>();
+        _util = Resolve<IGitHubHttpClient>(true);
+    }
+
+    [Fact]
+    public void Default()
+    {
+
     }
 }
