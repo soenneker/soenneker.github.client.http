@@ -14,7 +14,7 @@
         <AssemblyName>Soenneker.GitHub.Client.Http</AssemblyName>
         <PackageId>Soenneker.GitHub.Client.Http</PackageId>
         <PackageTags>github client http httpclient singleton githubhttpclient util csharp dotnet c# .net</PackageTags>
-        <Copyright>Copyright © 2024 Jake Soenneker</Copyright>
+        <Copyright>Copyright © 2024-2025 Jake Soenneker</Copyright>
         <Authors>Jake Soenneker</Authors>
         <Company>https://soenneker.com</Company>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
