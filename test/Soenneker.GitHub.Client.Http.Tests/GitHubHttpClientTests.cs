@@ -19,8 +19,15 @@ public class GitHubHttpClientTests : FixturedUnitTest
         _util = Resolve<IGitHubHttpClient>(true);
     }
 
+    [Fact]
+    public async ValueTask Get_should_get()
+    {
+        HttpClient client = await _util.Get(CancellationToken);
+        client.Should().NotBeNull();
+    }
+
     [ManualFact]
-    public async ValueTask Default()
+    public async ValueTask Send_Test()
     {
         HttpClient client = await _util.Get(CancellationToken);
 
