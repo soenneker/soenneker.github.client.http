@@ -1,6 +1,11 @@
+using System.Net.Http;
 using Soenneker.GitHub.Client.Http.Abstract;
 using Soenneker.Tests.FixturedUnit;
+using System.Threading.Tasks;
 using Xunit;
+using Soenneker.Extensions.HttpClient;
+using Soenneker.Facts.Manual;
+using FluentAssertions;
 
 namespace Soenneker.GitHub.Client.Http.Tests;
 
@@ -14,9 +19,14 @@ public class GitHubHttpClientTests : FixturedUnitTest
         _util = Resolve<IGitHubHttpClient>(true);
     }
 
-    [Fact]
-    public void Default()
+    [ManualFact]
+    public async ValueTask Default()
     {
+        HttpClient client = await _util.Get(CancellationToken);
 
+        const string url = $"repos/dotnet/aspnetcore/discussions?per_page=100";
+
+        string result = await client.SendToString(new HttpRequestMessage(HttpMethod.Get, url));
+        result.Should().NotBeNullOrEmpty();
     }
 }

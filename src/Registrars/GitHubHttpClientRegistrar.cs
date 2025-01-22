@@ -13,18 +13,22 @@ public static class GitHubHttpClientRegistrar
     /// <summary>
     /// Adds <see cref="IGitHubHttpClient"/> as a singleton service. <para/>
     /// </summary>
-    public static void AddGitHubHttpClientAsSingleton(this IServiceCollection services)
+    public static IServiceCollection AddGitHubHttpClientAsSingleton(this IServiceCollection services)
     {
         services.AddHttpClientCache();
         services.TryAddSingleton<IGitHubHttpClient, GitHubHttpClient>();
+
+        return services;
     }
 
     /// <summary>
     /// Adds <see cref="IGitHubHttpClient"/> as a scoped service. <para/>
     /// </summary>
-    public static void AddGitHubHttpClientAsScoped(this IServiceCollection services)
+    public static IServiceCollection AddGitHubHttpClientAsScoped(this IServiceCollection services)
     {
         services.AddHttpClientCache();
         services.TryAddScoped<IGitHubHttpClient, GitHubHttpClient>();
+
+        return services;
     }
 }
