@@ -15,8 +15,8 @@ public static class GitHubHttpClientRegistrar
     /// </summary>
     public static IServiceCollection AddGitHubHttpClientAsSingleton(this IServiceCollection services)
     {
-        services.AddHttpClientCacheAsSingleton();
-        services.TryAddSingleton<IGitHubHttpClient, GitHubHttpClient>();
+        services.AddHttpClientCacheAsSingleton()
+                .TryAddSingleton<IGitHubHttpClient, GitHubHttpClient>();
 
         return services;
     }
@@ -26,8 +26,8 @@ public static class GitHubHttpClientRegistrar
     /// </summary>
     public static IServiceCollection AddGitHubHttpClientAsScoped(this IServiceCollection services)
     {
-        services.AddHttpClientCacheAsSingleton();
-        services.TryAddScoped<IGitHubHttpClient, GitHubHttpClient>();
+        services.AddHttpClientCacheAsSingleton()
+                .TryAddScoped<IGitHubHttpClient, GitHubHttpClient>();
 
         return services;
     }
