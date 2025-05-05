@@ -1,4 +1,4 @@
-# Contributing to Soenneker.GitHub.Client.Http
+﻿# Contributing to Soenneker.GitHub.Client.Http
 
 We're excited that you're interested in contributing!
 
