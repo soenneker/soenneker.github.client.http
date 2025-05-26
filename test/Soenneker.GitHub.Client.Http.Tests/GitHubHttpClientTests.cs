@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Soenneker.Extensions.HttpClient;
 using Soenneker.Facts.Manual;
-using FluentAssertions;
+using AwesomeAssertions;
 
 namespace Soenneker.GitHub.Client.Http.Tests;
 
