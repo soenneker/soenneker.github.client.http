@@ -29,7 +29,7 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
     {
         return _httpClientCache.Get(_clientId, () =>
         {
-            var token = _config.GetValueStrict<string>("GitHub:Token");
+            var token = _config.GetValueStrict<string>("GH:Token");
 
             return new HttpClientOptions
             {
