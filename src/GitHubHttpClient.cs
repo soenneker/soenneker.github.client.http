@@ -47,13 +47,11 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
 
     public void Dispose()
     {
-        GC.SuppressFinalize(this);
         _httpClientCache.RemoveSync(_clientId);
     }
 
     public ValueTask DisposeAsync()
     {
-        GC.SuppressFinalize(this);
         return _httpClientCache.Remove(_clientId);
     }
 }
