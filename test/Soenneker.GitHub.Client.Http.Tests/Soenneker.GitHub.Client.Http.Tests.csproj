@@ -24,7 +24,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Soenneker.Extensions.HttpClient" Version="3.0.3370" />
+        <PackageReference Include="Soenneker.Extensions.HttpClient" Version="3.0.3371" />
         <PackageReference Include="Soenneker.Facts.Manual" Version="3.0.153" />
         <PackageReference Include="Soenneker.Utils.Test" Version="3.0.289" />
         <PackageReference Include="Soenneker.Tests.FixturedUnit" Version="3.0.1924" />
