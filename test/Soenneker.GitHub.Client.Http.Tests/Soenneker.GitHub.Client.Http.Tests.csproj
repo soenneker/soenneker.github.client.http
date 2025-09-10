@@ -27,7 +27,7 @@
         <PackageReference Include="Soenneker.Extensions.HttpClient" Version="3.0.3418" />
         <PackageReference Include="Soenneker.Facts.Manual" Version="3.0.156" />
         <PackageReference Include="Soenneker.Utils.Test" Version="3.0.293" />
-        <PackageReference Include="Soenneker.Tests.FixturedUnit" Version="3.0.1972" />
+        <PackageReference Include="Soenneker.Tests.FixturedUnit" Version="3.0.1973" />
         <PackageReference Include="xUnit.v3" Version="3.0.1" />
     </ItemGroup>
 
