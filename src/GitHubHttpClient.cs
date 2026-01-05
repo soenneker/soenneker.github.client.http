@@ -27,14 +27,14 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
 
     public ValueTask<HttpClient> Get(CancellationToken cancellationToken = default)
     {
-        return _httpClientCache.Get(_clientId, () =>
+        return _httpClientCache.Get(_clientId, _config, static config =>
         {
-            var token = _config.GetValueStrict<string>("GH:Token");
+            var token = config.GetValueStrict<string>("GH:Token");
 
             return new HttpClientOptions
             {
-                BaseAddress = "https://api.github.com/",
-                DefaultRequestHeaders = new Dictionary<string, string>
+                BaseAddress = new Uri("https://api.github.com/"),
+                DefaultRequestHeaders = new Dictionary<string, string>(4)
                 {
                     { "Accept", "application/vnd.github+json" },
                     { "Authorization", $"Bearer {token}" },
