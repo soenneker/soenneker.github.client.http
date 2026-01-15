@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
@@ -18,13 +19,7 @@
         </Content>
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-        <PackageReference Include="coverlet.collector" Version="6.0.4">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
-        <PackageReference Include="Soenneker.Extensions.HttpClient" Version="4.0.3563" />
+    <ItemGroup><PackageReference Include="Soenneker.Extensions.HttpClient" Version="4.0.3563" />
         <PackageReference Include="Soenneker.Facts.Manual" Version="4.0.163" />
         <PackageReference Include="Soenneker.Utils.Test" Version="4.0.301" />
         <PackageReference Include="Soenneker.Tests.FixturedUnit" Version="4.0.2163" />
@@ -33,6 +28,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Soenneker.GitHub.Client.Http.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="testconfig.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>
