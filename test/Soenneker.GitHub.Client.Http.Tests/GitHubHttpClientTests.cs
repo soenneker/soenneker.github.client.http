@@ -3,7 +3,6 @@ using Soenneker.GitHub.Client.Http.Abstract;
 using Soenneker.Tests.HostedUnit;
 using System.Threading.Tasks;
 using Soenneker.Extensions.HttpClient;
-using Soenneker.Facts.Manual;
 using AwesomeAssertions;
 
 namespace Soenneker.GitHub.Client.Http.Tests;
@@ -25,7 +24,7 @@ public class GitHubHttpClientTests : HostedUnitTest
         client.Should().NotBeNull();
     }
 
-    [ManualFact]
+    [Skip("Manual")]
     public async ValueTask Send_Test()
     {
         HttpClient client = await _util.Get(CancellationToken);
