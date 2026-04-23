@@ -20,14 +20,14 @@ public class GitHubHttpClientTests : HostedUnitTest
     [Test]
     public async ValueTask Get_should_get()
     {
-        HttpClient client = await _util.Get(CancellationToken);
+        HttpClient client = await _util.Get(System.Threading.CancellationToken.None);
         client.Should().NotBeNull();
     }
 
     [Skip("Manual")]
     public async ValueTask Send_Test()
     {
-        HttpClient client = await _util.Get(CancellationToken);
+        HttpClient client = await _util.Get(System.Threading.CancellationToken.None);
 
         const string url = $"repos/dotnet/aspnetcore/discussions?per_page=100";
 
@@ -35,3 +35,4 @@ public class GitHubHttpClientTests : HostedUnitTest
         result.Should().NotBeNullOrEmpty();
     }
 }
+
