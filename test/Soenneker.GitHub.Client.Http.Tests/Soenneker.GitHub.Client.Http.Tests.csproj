@@ -17,9 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Extensions.HttpClient" Version="4.0.3959" />
+        <PackageReference Include="Soenneker.Extensions.HttpClient" Version="4.0.3961" />
         <PackageReference Include="Soenneker.Utils.Test" Version="4.0.324" />
-        <PackageReference Include="Soenneker.Tests.HostedUnit" Version="4.0.196" />
+        <PackageReference Include="Soenneker.Tests.HostedUnit" Version="4.0.197" />
         <PackageReference Include="TUnit" Version="1.65.38" />
     </ItemGroup>
 
