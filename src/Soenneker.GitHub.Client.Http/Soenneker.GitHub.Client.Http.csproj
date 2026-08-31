@@ -46,6 +46,6 @@
     <ItemGroup>
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.868" />
         <PackageReference Include="Soenneker.HttpClients.LoggingHandler" Version="4.0.214" />
-        <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="4.0.2044" />
+        <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="4.0.2045" />
     </ItemGroup>
 </Project>
