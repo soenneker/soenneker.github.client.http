@@ -13,14 +13,13 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.GitHub.Client.Http;
 
-/// <inheritdoc cref="IGitHubHttpClient"/>
 public sealed class GitHubHttpClient : IGitHubHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
     private readonly IConfiguration _config;
     private readonly ILogger<GitHubHttpClient> _logger;
 
-    private const string _clientId = nameof(GitHubHttpClient);
+    private readonly string _clientId = $"{nameof(GitHubHttpClient)}:{Guid.NewGuid():N}";
 
     public GitHubHttpClient(IHttpClientCache httpClientCache, IConfiguration config, ILogger<GitHubHttpClient> logger)
     {
@@ -60,18 +59,11 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
         }, cancellationToken);
     }
 
-    /// <summary>
-    /// Releases resources used by the current instance.
-    /// </summary>
     public void Dispose()
     {
         _httpClientCache.RemoveSync(_clientId);
     }
 
-    /// <summary>
-    /// Asynchronously releases resources used by the current instance.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation.</returns>
     public ValueTask DisposeAsync()
     {
         return _httpClientCache.Remove(_clientId);
