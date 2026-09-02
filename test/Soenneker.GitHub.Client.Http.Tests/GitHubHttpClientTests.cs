@@ -1,4 +1,5 @@
 using System.Net.Http;
+using System.Threading;
 using Soenneker.GitHub.Client.Http.Abstract;
 using Soenneker.Tests.HostedUnit;
 using System.Threading.Tasks;
@@ -18,9 +19,9 @@ public class GitHubHttpClientTests : HostedUnitTest
     }
 
     [Test]
-    public async ValueTask Get_should_get()
+    public async ValueTask Get_should_get(CancellationToken cancellationToken)
     {
-        HttpClient client = await _util.Get(System.Threading.CancellationToken.None);
+        HttpClient client = await _util.Get(cancellationToken);
         client.Should().NotBeNull();
     }
 
