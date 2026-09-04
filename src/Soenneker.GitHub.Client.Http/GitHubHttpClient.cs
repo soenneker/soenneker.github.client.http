@@ -13,6 +13,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.GitHub.Client.Http;
 
+/// <inheritdoc cref="IGitHubHttpClient" />
 public sealed class GitHubHttpClient : IGitHubHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
