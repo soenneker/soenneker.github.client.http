@@ -13,7 +13,6 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.GitHub.Client.Http;
 
-/// <inheritdoc cref="IGitHubHttpClient" />
 public sealed class GitHubHttpClient : IGitHubHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
@@ -21,6 +20,7 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
     private readonly ILogger<GitHubHttpClient> _logger;
 
     private readonly string _clientId = $"{nameof(GitHubHttpClient)}:{Guid.NewGuid():N}";
+    private readonly string _uploadClientId = $"{nameof(GitHubHttpClient)}:Upload:{Guid.NewGuid():N}";
 
     public GitHubHttpClient(IHttpClientCache httpClientCache, IConfiguration config, ILogger<GitHubHttpClient> logger)
     {
@@ -31,7 +31,17 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
 
     public ValueTask<HttpClient> Get(CancellationToken cancellationToken = default)
     {
-        return _httpClientCache.Get(_clientId, (config: _config, logger: _logger), static state =>
+        return GetClient(_clientId, null, cancellationToken);
+    }
+
+    public ValueTask<HttpClient> GetForUpload(CancellationToken cancellationToken = default)
+    {
+        return GetClient(_uploadClientId, TimeSpan.FromMinutes(10), cancellationToken);
+    }
+
+    private ValueTask<HttpClient> GetClient(string clientId, TimeSpan? timeout, CancellationToken cancellationToken)
+    {
+        return _httpClientCache.Get(clientId, (config: _config, logger: _logger, timeout), static state =>
         {
             var token = state.config.GetValueStrict<string>("GH:Token");
             bool logging = state.config.GetValue<bool>("GH:RequestResponseLogging");
@@ -39,6 +49,7 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
             return new HttpClientOptions
             {
                 BaseAddress = new Uri("https://api.github.com/"),
+                Timeout = state.timeout,
                 DefaultRequestHeaders = new Dictionary<string, string>(4)
                 {
                     { "Accept", "application/vnd.github+json" },
@@ -62,11 +73,25 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
 
     public void Dispose()
     {
-        _httpClientCache.RemoveSync(_clientId);
+        try
+        {
+            _httpClientCache.RemoveSync(_clientId);
+        }
+        finally
+        {
+            _httpClientCache.RemoveSync(_uploadClientId);
+        }
     }
 
-    public ValueTask DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
-        return _httpClientCache.Remove(_clientId);
+        try
+        {
+            await _httpClientCache.Remove(_clientId).ConfigureAwait(false);
+        }
+        finally
+        {
+            await _httpClientCache.Remove(_uploadClientId).ConfigureAwait(false);
+        }
     }
 }

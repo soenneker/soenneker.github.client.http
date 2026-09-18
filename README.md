@@ -50,4 +50,6 @@ public sealed class GitHubRepositoryReader(IGitHubHttpClient clients)
 }
 ```
 
-Callers borrow the returned client and must not dispose it. The provider removes its own cached client when disposed. Scoped providers use isolated cache entries, so disposing one scope cannot destroy another scope's transport.
+Use `GetForUpload(cancellationToken)` for asset uploads. It returns a separate cached client with a 10-minute overall request timeout and the same authentication and logging settings. `Get` keeps its existing default timeout. Caller cancellation tokens can cancel upload requests earlier.
+
+Callers borrow the returned clients and must not dispose them. The provider removes both cached clients when disposed. Scoped providers use isolated cache entries, so disposing one scope cannot destroy another scope's transport.
