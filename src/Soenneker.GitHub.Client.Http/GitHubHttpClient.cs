@@ -43,7 +43,7 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
     {
         return _httpClientCache.Get(clientId, (config: _config, logger: _logger, timeout), static state =>
         {
-            var token = state.config.GetValueStrict<string>("GH:Token");
+            var token = state.config.GetStringStrict("GH:Token");
             bool logging = state.config.GetValue<bool>("GH:RequestResponseLogging");
 
             return new HttpClientOptions
