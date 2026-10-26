@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net11.0</TargetFramework>
         <IsAotCompatible>true</IsAotCompatible>
         <EnableConfigurationBindingGenerator>true</EnableConfigurationBindingGenerator>
         <Nullable>enable</Nullable>
@@ -10,7 +10,7 @@
 
     <PropertyGroup>
         <Description>Provides a configured, cached HttpClient for GitHub's REST API.</Description>
-        <Version Condition="'$(BUILD_VERSION)' == ''">4.0.0</Version>
+        <Version Condition="'$(BUILD_VERSION)' == ''">11.0.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.GitHub.Client.Http</AssemblyName>
         <PackageId>Soenneker.GitHub.Client.Http</PackageId>
@@ -46,8 +46,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.911" />
-        <PackageReference Include="Soenneker.HttpClients.LoggingHandler" Version="4.0.266" />
+        <PackageReference Include="Soenneker.Extensions.Configuration" Version="11.0.913" />
+        <PackageReference Include="Soenneker.HttpClients.LoggingHandler" Version="4.0.267" />
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="4.0.2128" />
     </ItemGroup>
 </Project>
