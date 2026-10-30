@@ -63,6 +63,9 @@ public sealed class GitHubHttpClient : IGitHubHttpClient
                         () => new HttpClientLoggingHandler(state.logger, new HttpClientLoggingOptions
                         {
                             LogLevel = LogLevel.Debug,
+                            LogRequestBody = true,
+                            LogResponseBody = true,
+                            LogQueryString = true,
                             RedactedHeaders = ["Authorization"]
                         })
                     ]
